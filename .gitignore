@@ -1,0 +1,30 @@
+# Ignorar dependências do frontend (React/Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+frontend/.env.local
+frontend/.DS_Store
+
+# Ignorar dependências do backend (Python/Flask)
+backend/__pycache__/
+backend/env/
+backend/venv/
+backend/.env
+backend/instance/
+backend/.pytest_cache/
+backend/*.pyc
+
+# Ignorar arquivos do sistema
+*.log
+.DS_Store
+Thumbs.db
+
+# Ignorar configurações de IDEs
+.vscode/
+.idea/
+*.swp
+
+# Ignorar arquivos de build temporários
+*.bak
+*.tmp
