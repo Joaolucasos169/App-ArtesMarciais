@@ -1,5 +1,6 @@
 // src/pages/Login.jsx
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../styles/Login.module.css';
 
 export default function Login() {
@@ -8,8 +9,7 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // aqui você pode fazer a chamada para o backend depois
-    console.log('Email:', email, 'Senha:', senha);
+    console.log('Email:', email, 'Senha:', senha);//Chamada para o backend depois
   };
 
   return (
@@ -31,6 +31,12 @@ export default function Login() {
           required
         />
         <button type="submit">Entrar</button>
+
+        <div className={styles.links}>
+          <Link to="/esqueceusenha">Esqueceu a senha?</Link>
+          <span> | </span>
+          <Link to='/register'>Cadastrar-se</Link>
+        </div>
       </form>
     </div>
   );
