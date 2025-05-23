@@ -9,7 +9,7 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('Email:', email, 'Senha:', senha);//Chamada para o backend depois
+    console.log('Email:', email, 'Senha:', senha);//Chamada para o backend
   };
 
   return (
@@ -35,7 +35,7 @@ export default function Login() {
         <div className={styles.links}>
           <Link to="/esqueceusenha">Esqueceu a senha?</Link>
           <span> | </span>
-          <Link to='/register'>Cadastrar-se</Link>
+          <Link to="/register">Cadastrar-se</Link>
         </div>
       </form>
     </div>

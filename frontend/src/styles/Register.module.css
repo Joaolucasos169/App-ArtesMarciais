@@ -1,0 +1,101 @@
+/* src/styles/Register.module.css */
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.form {
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.grupoModalidades {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.modalidadeTitulo {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #5e60ce;
+}
+
+.modalidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.modalidades label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px; /* espaço entre o checkbox e o texto */
+  white-space: nowrap; /* impede quebra de linha no nome */
+  font-weight: 500;
+  color: #5e60ce;
+}
+
+.modalidades input[type="checkbox"] {
+  accent-color: #5e60ce;
+  cursor: pointer;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #5e60ce;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+button:hover {
+    background-color: #4345a0;
+}
+
+.links {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+input:not([type="checkbox"]) {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
