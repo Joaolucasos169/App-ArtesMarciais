@@ -118,10 +118,12 @@ export default function Register() {
                     required
                 />
 
+                <label className={styles.labelLogo}>Logo da academia:</label>
                 <input
                     type="file"
                     name="logo"
                     accept="image/*"
+                    className={styles.inputLogo}
                     onChange={handleChange}
                 />
 

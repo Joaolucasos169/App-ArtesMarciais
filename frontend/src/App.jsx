@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import EsqueceuSenha from './pages/EsqueceuSenha';
 import Register from './pages/Register';
+import CadastroAluno from './pages/CadastroAluno';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />}/>
         <Route path="/esqueceusenha" element={<EsqueceuSenha />}/>
+        <Route path="/cadastroaluno" element={<CadastroAluno />}/>
       </Routes>
     </BrowserRouter>
   );

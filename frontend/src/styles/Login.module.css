@@ -71,3 +71,29 @@ button:hover {
 .links a:hover {
   text-decoration: underline;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .loginForm {
+    padding: 20px;
+  }
+
+  input,
+  button {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .links a {
+    font-size: 0.95rem;
+    margin: 4px;
+    display: inline-block;
+  }
+
+  
+}
+

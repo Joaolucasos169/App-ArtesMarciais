@@ -1,34 +1,35 @@
 /* src/styles/Register.module.css */
 .container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    min-height: 100vh;
-    background-color: #f4f4f4;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
 }
 
 .form {
-    background-color: #fff;
-    padding: 32px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .grupoModalidades {
@@ -53,8 +54,8 @@ input {
 .modalidades label {
   display: flex;
   align-items: baseline;
-  gap: 6px; /* espaço entre o checkbox e o texto */
-  white-space: nowrap; /* impede quebra de linha no nome */
+  gap: 6px;
+  white-space: nowrap;
   font-weight: 500;
   color: #5e60ce;
 }
@@ -65,30 +66,30 @@ input {
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    background-color: #5e60ce;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-bottom: 8px;
+  width: 100%;
+  padding: 12px;
+  background-color: #5e60ce;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 8px;
 }
 
 button:hover {
-    background-color: #4345a0;
+  background-color: #4345a0;
 }
 
 .links {
-    text-align: center;
-    margin-top: 12px;
+  text-align: center;
+  margin-top: 12px;
 }
 
 .links a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 input:not([type="checkbox"]) {
@@ -98,4 +99,75 @@ input:not([type="checkbox"]) {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+}
+
+.labelLogo {
+  font-size: 14px;
+  color: #4345a0;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  display: block;
+  font-weight: bold;
+}
+
+.inputLogo {
+  background-color: #2e2e2e;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .modalidades {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .modalidades label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #5e60ce;
+    font-size: 1rem;
+  }
+
+  .labelLogo {
+    font-size: 14px;
+    color: #4345a0;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    display: block;
+    font-weight: bold;
+  }
+
+  .inputLogo {
+    background-color: #2e2e2e;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button,
+  input {
+    font-size: 1rem;
+  }
 }
