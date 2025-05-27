@@ -9,7 +9,8 @@ const graduacoes = {
   "Muay Thai": [
     "Branco", "Vermelho e Branco", "Vermelho", "Vermelho e Azul Claro",
     "Azul Claro", "Azul Claro e Azul Escuro", "Azul Escuro",
-    "Azul Escuro e Preto", "Preto", "Preto e Branco", "Preto, Branco e Vermelho"],
+    "Azul Escuro e Preto", "Preto", "Preto e Branco", "Preto, Branco e Vermelho"
+  ],
 };
 
 const tiposSanguineos = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
@@ -22,8 +23,6 @@ export default function CadastrarAluno() {
     foto: null,
     modalidades: [],
     graduacoes: {},
-    dataUltimaGraduacao: '',
-    documentoGraduacao: null,
     contato: '',
     contatoEmergencia: '',
     tipoSanguineo: '',
@@ -70,21 +69,60 @@ export default function CadastrarAluno() {
         delete graduacoesAtualizadas[modalidade];
         return { ...prev, modalidades: novas, graduacoes: graduacoesAtualizadas };
       } else {
-        return { ...prev, modalidades: [...atual, modalidade] };
+        return {
+          ...prev,
+          modalidades: [...atual, modalidade],
+          graduacoes: {
+            ...prev.graduacoes,
+            [modalidade]: { faixa: '', data: '', documento: null }
+          }
+        };
       }
     });
   };
 
-  const handleGraduacaoChange = (modalidade, valor) => {
+  const handleGraduacaoChange = (modalidade, faixa) => {
     setFormData((prev) => ({
       ...prev,
-      graduacoes: { ...prev.graduacoes, [modalidade]: valor }
+      graduacoes: {
+        ...prev.graduacoes,
+        [modalidade]: {
+          ...prev.graduacoes[modalidade],
+          faixa
+        }
+      }
+    }));
+  };
+
+  const handleGraduacaoDataChange = (modalidade, data) => {
+    setFormData((prev) => ({
+      ...prev,
+      graduacoes: {
+        ...prev.graduacoes,
+        [modalidade]: {
+          ...prev.graduacoes[modalidade],
+          data
+        }
+      }
+    }));
+  };
+
+  const handleGraduacaoDocumentoChange = (modalidade, file) => {
+    setFormData((prev) => ({
+      ...prev,
+      graduacoes: {
+        ...prev.graduacoes,
+        [modalidade]: {
+          ...prev.graduacoes[modalidade],
+          documento: file
+        }
+      }
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // Enviar ao backend
+    console.log(formData); // Enviar para o backend futuramente
   };
 
   return (
@@ -92,6 +130,7 @@ export default function CadastrarAluno() {
       <form onSubmit={handleSubmit} className={styles.form}>
         <h2 className={styles.formTitle}>Cadastrar Aluno</h2>
 
+        {/* INFORMAÇÕES PESSOAIS */}
         <div className={styles.formSection}>
           <h3 className={styles.sectionTitle}>Informações Pessoais</h3>
 
@@ -126,6 +165,7 @@ export default function CadastrarAluno() {
           </div>
         </div>
 
+        {/* CONTATOS */}
         <div className={styles.formSection}>
           <h3 className={styles.sectionTitle}>Contatos</h3>
 
@@ -140,6 +180,7 @@ export default function CadastrarAluno() {
           </div>
         </div>
 
+        {/* ENDEREÇO */}
         <div className={styles.formSection}>
           <h3 className={styles.sectionTitle}>Endereço</h3>
 
@@ -153,7 +194,6 @@ export default function CadastrarAluno() {
               <label>Número:</label>
               <input type="text" name="numero" value={formData.endereco.numero} onChange={handleEnderecoChange} className={styles.input} required />
             </div>
-
             <div className={styles.formGroup}>
               <label>Complemento:</label>
               <input type="text" name="complemento" value={formData.endereco.complemento} onChange={handleEnderecoChange} className={styles.input} />
@@ -165,7 +205,6 @@ export default function CadastrarAluno() {
               <label>Bairro:</label>
               <input type="text" name="bairro" value={formData.endereco.bairro} onChange={handleEnderecoChange} className={styles.input} required />
             </div>
-
             <div className={styles.formGroup}>
               <label>Cidade:</label>
               <input type="text" name="cidade" value={formData.endereco.cidade} onChange={handleEnderecoChange} className={styles.input} required />
@@ -177,7 +216,6 @@ export default function CadastrarAluno() {
               <label>Estado:</label>
               <input type="text" name="estado" value={formData.endereco.estado} onChange={handleEnderecoChange} className={styles.input} required />
             </div>
-
             <div className={styles.formGroup}>
               <label>CEP:</label>
               <input type="text" name="cep" value={formData.endereco.cep} onChange={handleEnderecoChange} className={styles.input} required />
@@ -185,6 +223,7 @@ export default function CadastrarAluno() {
           </div>
         </div>
 
+        {/* MODALIDADES E GRADUAÇÕES */}
         <div className={styles.formSection}>
           <h3 className={styles.sectionTitle}>Modalidades e Graduações</h3>
 
@@ -192,14 +231,18 @@ export default function CadastrarAluno() {
           {Object.keys(graduacoes).map((mod) => (
             <div key={mod} className={styles.modalidadeItem}>
               <label className={styles.modalidadeCheckbox}>
-                <input type="checkbox" checked={formData.modalidades.includes(mod)} onChange={() => toggleModalidade(mod)} />
+                <input
+                  type="checkbox"
+                  checked={formData.modalidades.includes(mod)}
+                  onChange={() => toggleModalidade(mod)}
+                />
                 {mod}
               </label>
 
               {formData.modalidades.includes(mod) && (
                 <div className={styles.graduacaoContainer}>
                   <select
-                    value={formData.graduacoes[mod] || ''}
+                    value={formData.graduacoes[mod]?.faixa || ''}
                     onChange={(e) => handleGraduacaoChange(mod, e.target.value)}
                     className={styles.input}
                   >
@@ -211,12 +254,21 @@ export default function CadastrarAluno() {
 
                   <div className={styles.formGroup}>
                     <label>Data da última graduação:</label>
-                    <input type="date" name="dataUltimaGraduacao" value={formData.dataUltimaGraduacao} onChange={handleChange} className={styles.input} />
+                    <input
+                      type="date"
+                      value={formData.graduacoes[mod]?.data || ''}
+                      onChange={(e) => handleGraduacaoDataChange(mod, e.target.value)}
+                      className={styles.input}
+                    />
                   </div>
 
                   <div className={styles.formGroup}>
                     <label>Documento que comprova a graduação:</label>
-                    <input type="file" accept=".pdf,.jpg,.png" onChange={(e) => handleFileChange('documentoGraduacao', e)} />
+                    <input
+                      type="file"
+                      accept=".pdf,.jpg,.png"
+                      onChange={(e) => handleGraduacaoDocumentoChange(mod, e.target.files[0])}
+                    />
                   </div>
                 </div>
               )}
@@ -225,6 +277,7 @@ export default function CadastrarAluno() {
         </div>
 
         <button type="submit" className={styles.submitButton}>Cadastrar Aluno</button>
+        <button type="submit" className={styles.submitButton}>Voltar para o Login</button>
       </form>
     </div>
   );

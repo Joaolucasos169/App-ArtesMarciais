@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: auto;
 }
 
 input {
@@ -124,11 +125,14 @@ input:not([type="checkbox"]) {
 @media (max-width: 768px) {
   .container {
     padding: 8px;
+    padding-top: 48px;
+    /* <- Adiciona espaço no topo só para mobile */
   }
 
   .form {
     width: 100%;
     padding: 20px;
+    margin-top: auto;
   }
 
   .modalidades {
