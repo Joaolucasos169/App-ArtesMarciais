@@ -1,0 +1,230 @@
+/* Container principal */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  background-color: #4e1fa7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar nav ul li,
+.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Header (hero section) */
+.header {
+  text-align: center;
+  color: #4e1fa7;
+  margin: 32px 0 24px;
+  padding: 0 16px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 1rem;
+  color: #5f27cd;
+}
+
+/* Funcionalidades */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 16px;
+}
+
+.featureItem {
+  background-color: white;
+  border-left: 6px solid #5f27cd;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: #333;
+}
+
+/* Call to action */
+.cta {
+  margin-top: 32px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.cta button {
+  background-color: #4e1fa7;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta button:hover {
+  background-color: #5f27cd;
+}
+
+.trialNote {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #4e1fa7;
+}
+
+/* Planos */
+.plans {
+  padding: 40px 16px;
+  background-color: #f2f2f2;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.plans h2 {
+  font-size: 2rem;
+  color: #4e1fa7;
+  margin-bottom: 32px;
+}
+
+.planCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.planCard {
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 24px;
+  width: 280px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+
+.planCard h3 {
+  color: #4e1fa7;
+  margin-bottom: 8px;
+}
+
+.highlight {
+  color: #5f27cd;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.planCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.planCard ul li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.planCard ul li::before {
+  content: '✔';
+  color: #4e1fa7;
+  position: absolute;
+  left: 0;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.planCard button {
+  background-color: #4e1fa7;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.planCard button:hover {
+  background-color: #5f27cd;
+}
+
+.pro {
+  border-color: #5f27cd;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .features {
+    gap: 12px;
+  }
+
+  .cta button {
+    width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+}

@@ -277,7 +277,10 @@ export default function CadastrarAluno() {
         </div>
 
         <button type="submit" className={styles.submitButton}>Cadastrar Aluno</button>
-        <button type="submit" className={styles.submitButton}>Voltar para o Login</button>
+        
+        <div className={styles.links}>
+          <Link to="/">Voltar para o login</Link>
+        </div>
       </form>
     </div>
   );

@@ -77,6 +77,30 @@ button:hover {
   text-decoration: underline;
 }
 
+.toggleMetodo {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.toggleMetodo button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #5e60ce;
+}
+
+.toggleMetodo button.active {
+  background-color: #5e60ce;
+  color: white;
+  border: none;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .form {
