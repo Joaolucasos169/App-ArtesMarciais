@@ -1,16 +1,24 @@
-/* Container principal */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
 .container {
   width: 100%;
   min-height: 100vh;
+  padding-top: 64px;
   background-color: #f2f2f2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Navbar */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background-color: #4e1fa7;
   color: white;
@@ -18,8 +26,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  flex-wrap: wrap;
   box-sizing: border-box;
+  z-index: 1000;
 }
 
 .logo {
@@ -27,7 +35,12 @@
   font-weight: bold;
 }
 
-.navbar nav ul {
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navLinks ul {
   list-style: none;
   display: flex;
   gap: 20px;
@@ -35,81 +48,53 @@
   margin: 0;
 }
 
-.navbar nav ul li,
-.navbar nav ul li a {
+.navLinks ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
-.navbar nav ul li a:hover {
+.navLinks ul li a:hover {
   text-decoration: underline;
 }
 
-/* Header (hero section) */
-.header {
-  text-align: center;
-  color: #4e1fa7;
-  margin: 32px 0 24px;
-  padding: 0 16px;
+/* Ícone do hamburguer */
+.hamburger {
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+  color: white;
 }
 
-.header h1 {
+.main {
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.hero {
+  color: #4e1fa7;
+  margin-bottom: 24px;
+}
+
+.hero h2 {
   font-size: 2rem;
   margin-bottom: 8px;
 }
 
-.header p {
+.hero p {
   font-size: 1rem;
   color: #5f27cd;
 }
 
-/* Funcionalidades */
 .features {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 16px;
-}
-
-.featureItem {
-  background-color: white;
-  border-left: 6px solid #5f27cd;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 24px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   color: #333;
-}
-
-/* Call to action */
-.cta {
-  margin-top: 32px;
-  text-align: center;
-  padding: 0 16px;
-}
-
-.cta button {
-  background-color: #4e1fa7;
-  color: white;
-  font-size: 1rem;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.cta button:hover {
-  background-color: #5f27cd;
-}
-
-.trialNote {
-  margin-top: 16px;
-  font-size: 0.9rem;
-  color: #4e1fa7;
 }
 
 /* Planos */
@@ -203,8 +188,65 @@
   border-color: #5f27cd;
 }
 
-/* Responsivo */
+/* CTA */
+.cta {
+  margin-top: 32px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.primaryButton {
+  background-color: #4e1fa7;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.primaryButton:hover {
+  background-color: #5f27cd;
+}
+
+.note {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #4e1fa7;
+}
+
+/* Menu mobile */
+.menuAberto {
+  display: block !important;
+}
+
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    background-color: #4e1fa7;
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .navLinks ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navLinks ul li {
+    margin-bottom: 12px;
+  }
+
   .header h1 {
     font-size: 1.5rem;
   }
@@ -217,14 +259,7 @@
     width: 100%;
   }
 
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar nav ul {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 12px;
+  .planCard {
+    width: 90%;
   }
 }

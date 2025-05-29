@@ -1,13 +1,25 @@
-import styles from '../styles/Home.module.css';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
+  const [menuAberto, setMenuAberto] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuAberto(!menuAberto);
+  };
+
   return (
     <div className={styles.container}>
       {/* Navbar */}
       <header className={styles.navbar}>
         <h1 className={styles.logo}>Meu Dojô</h1>
-        <nav>
+
+        <div className={styles.hamburger} onClick={toggleMenu}>
+          ☰
+        </div>
+
+        <nav className={`${styles.navLinks} ${menuAberto ? styles.menuAberto : ''}`}>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#sobre">Sobre nós</a></li>
