@@ -6,10 +6,34 @@ import styles from '../styles/Login.module.css';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [mensagem, setMensagem] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Email:', email, 'Senha:', senha);//Chamada para o backend
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, senha }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMensagem('Login realizado com sucesso!');
+        // Exemplo: salvar token no localStorage e redirecionar
+        // localStorage.setItem('token', data.token);
+        // navigate('/dashboard');
+      } else {
+        setMensagem(data.message || 'Email ou senha inválidos.');
+      }
+    } catch (error) {
+      console.error('Erro ao conectar com o backend:', error);
+      setMensagem('Erro ao conectar com o servidor.');
+    }
   };
 
   return (
@@ -31,6 +55,8 @@ export default function Login() {
           required
         />
         <button type="submit">Entrar</button>
+
+        {mensagem && <p className={styles.mensagem}>{mensagem}</p>}
 
         <div className={styles.links}>
           <Link to="/esqueceusenha">Esqueceu a senha?</Link>

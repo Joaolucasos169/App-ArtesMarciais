@@ -111,6 +111,15 @@ export default function Register() {
 
                 <input
                     type="password"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    value={formData.senha}
+                    onChange={handleChange}
+                    required
+                />
+
+                <input
+                    type="password"
                     name="confirmarSenha"
                     placeholder="Confirmar senha"
                     value={formData.confirmarSenha}
